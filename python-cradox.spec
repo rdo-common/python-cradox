@@ -5,8 +5,8 @@
 %global pypi_name cradox
 
 Name:           python-%{pypi_name}
-Version:        1.1.8
-Release:        3%{?dist}
+Version:        1.3.0
+Release:        1%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
 License:        LGPLv2
@@ -26,6 +26,7 @@ BuildRequires:  python-setuptools
 BuildRequires:  python-pbr
 BuildRequires:  Cython
 BuildRequires:  python-jinja2
+BuildRequires:  python-pifpaf
 BuildRequires:  librados2-devel
 
 Requires:  Cython
@@ -44,6 +45,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
 BuildRequires:  python3-Cython
 BuildRequires:  python3-jinja2
+BuildRequires:  python3-pifpaf
 BuildRequires:  librados2-devel
 
 Requires:  python3-Cython
@@ -86,6 +88,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Wed Sep 28 2016 Javier Peña <jpena@redhat.com> - 1.3.0-1
+- Updated to upstream version 1.3.0
+
 * Mon Aug 1 2016 Javier Peña <jpena@redhat.com> - 1.1.8-3
 - Removed gcc from BuildRequires
 
