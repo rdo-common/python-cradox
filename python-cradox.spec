@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.3.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
 License:        LGPLv2
@@ -88,6 +88,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Mon Dec 19 2016 Miro Hrončok <mhroncok@redhat.com> - 1.3.0-2
+- Rebuild for Python 3.6
+
 * Wed Sep 28 2016 Javier Peña <jpena@redhat.com> - 1.3.0-1
 - Updated to upstream version 1.3.0
 
