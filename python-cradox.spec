@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.3.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
 License:        LGPLv2
@@ -88,6 +88,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
