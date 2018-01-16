@@ -6,7 +6,7 @@
 
 Name:           python-%{pypi_name}
 Version:        1.3.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
 License:        LGPLv2
@@ -22,14 +22,14 @@ Summary:        Python libraries for the Ceph librados library with use cython i
 %{?python_provide:%python_provide python2-%{pypi_name}}
 
 BuildRequires:  python2-devel
-BuildRequires:  python-setuptools
-BuildRequires:  python-pbr
-BuildRequires:  Cython
-BuildRequires:  python-jinja2
-BuildRequires:  python-pifpaf
+BuildRequires:  python2-setuptools
+BuildRequires:  python2-pbr
+BuildRequires:  python2-Cython
+BuildRequires:  python2-jinja2
+BuildRequires:  python2-pifpaf
 BuildRequires:  librados2-devel
 
-Requires:  Cython
+Requires:  python2-Cython
 
 %description -n python2-%{pypi_name}
 Python libraries for the Ceph librados library with use cython instead of ctypes
@@ -88,6 +88,10 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Tue Jan 16 2018 Iryna Shcherbina <ishcherb@redhat.com> - 1.3.2-4
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.3.2-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
