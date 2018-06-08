@@ -5,7 +5,7 @@
 %global pypi_name cradox
 
 Name:           python-%{pypi_name}
-Version:        2.0.7
+Version:        2.1.0
 Release:        1%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
@@ -88,6 +88,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Thu Jun  7 2018 Mehdi Abaakouk <sileht@sileht.net> - 2.1.0-1
+- Upstream 2.1.0
+
 * Thu Jun  7 2018 Haïkel Guémar <hguemar@fedoraproject.org> - 2.0.7-1
 - Upstream 2.0.7
 
