@@ -1,12 +1,16 @@
-%if 0%{?fedora}
-%global with_python3 1
+%if 0%{?fedora} || 0%{?rhel} > 7
+%bcond_with    python2
+%bcond_without python3
+%else
+%bcond_without python2
+%bcond_with    python3
 %endif
 
 %global pypi_name cradox
 
 Name:           python-%{pypi_name}
 Version:        2.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
 License:        LGPLv2
@@ -16,7 +20,7 @@ Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{
 %description
 Python libraries for the Ceph librados library with use cython instead of ctypes
 
-
+%if %{with python2}
 %package -n     python2-%{pypi_name}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 %{?python_provide:%python_provide python2-%{pypi_name}}
@@ -34,9 +38,9 @@ Requires:  python2-Cython
 
 %description -n python2-%{pypi_name}
 Python libraries for the Ceph librados library with use cython instead of ctypes
+%endif
 
-
-%if 0%{?with_python3}
+%if %{with python3}
 %package -n     python3-%{pypi_name}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 %{?python_provide:%python_provide python3-%{pypi_name}}
@@ -61,18 +65,22 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %autosetup -n %{pypi_name}-%{version}
 
 %build
+%if %{with python2}
 %py2_build
-%if 0%{?with_python3}
+%endif
+%if %{with python3}
 %py3_build
 %endif
 
 %install
-%if 0%{?with_python3}
+%if 0%{with python3}
 %py3_install
 %endif
+%if %{with python2}
 %py2_install
+%endif
 
-
+%if %{with python2}
 %files -n python2-%{pypi_name}
 %doc README.rst
 %license LICENSE
@@ -80,8 +88,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %{python2_sitearch}/%{pypi_name}-%{version}-py?.?.egg-info
 %exclude %{_usrsrc}/debug/*
 %exclude %{_libdir}/debug/*
+%endif
 
-%if 0%{?with_python3}
+%if %{with python3}
 %files -n python3-%{pypi_name}
 %doc README.rst
 %license LICENSE
@@ -90,6 +99,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Mon Sep 24 2018 Javier Peña <jpena@redhat.com> - 2.1.0-3
+- Removed python2 subpackage from Fedora 30+ (bz#1632335)
+
 * Tue Aug 07 2018 Javier Peña <jpena@redhat.com> - 2.1.0-2
 - Upstream 2.1.0
 - Fixed for rawhide builds (bz#1605642)
