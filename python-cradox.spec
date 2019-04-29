@@ -10,12 +10,13 @@
 
 Name:           python-%{pypi_name}
 Version:        2.1.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Python libraries for the Ceph librados library with use cython instead of ctypes
 
 License:        LGPLv2
 URL:            https://github.com/sileht/pycradox
 Source0:        https://files.pythonhosted.org/packages/source/c/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+ExcludeArch:	i686 armv7hl
 
 %description
 Python libraries for the Ceph librados library with use cython instead of ctypes
@@ -99,6 +100,9 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 %endif
 
 %changelog
+* Mon Apr 29 2019 Javier Peña <jpena@redhat.com> - 2.1.0-5
+- Exclude i686 and armv7hl arches from build, since Ceph does it too
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.1.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
