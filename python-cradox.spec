@@ -1,3 +1,4 @@
+%{?python_enable_dependency_generator}
 %if 0%{?fedora} || 0%{?rhel} > 7
 %bcond_with    python2
 %bcond_without python3
@@ -31,7 +32,6 @@ BuildRequires:  python2-setuptools
 BuildRequires:  python2-pbr
 BuildRequires:  python2-Cython
 BuildRequires:  python2-jinja2
-BuildRequires:  python2-pifpaf
 BuildRequires:  librados2-devel
 BuildRequires:  gcc
 
@@ -51,7 +51,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-pbr
 BuildRequires:  python3-Cython
 BuildRequires:  python3-jinja2
-BuildRequires:  python3-pifpaf
 BuildRequires:  librados2-devel
 BuildRequires:  gcc
 
@@ -64,6 +63,7 @@ Python libraries for the Ceph librados library with use cython instead of ctypes
 
 %prep
 %autosetup -n %{pypi_name}-%{version}
+sed -i '/setup_requires/,+1d' setup.py
 
 %build
 %if %{with python2}
